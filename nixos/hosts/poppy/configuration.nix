@@ -97,26 +97,30 @@
     };
   };
 
-  services.cage =
-    let
-      # TODO: Update to relevant URL
-      url = "https://nerdherd4043.org/";
-    in
-    {
-      enable = true;
-      program = "/run/current-system/sw/bin/firefox --kiosk ${url}";
-      extraArguments = [
-        "-d" # Don't render client-side decorations
-        "-m last" # Use only the last monitor connected
-        "-s" # Allow TTY switching
-      ];
-      environment = {
-        # WLR_LIBINPUT_NO_DEVICES = "1"; # Disable input devices (maybe?)
-        MOZ_ENABLE_WAYLAND = "1";
-        MOZ_CRASHREPORTER_DISABLE = "1";
-      };
-      user = "nerdherd4043";
+  environment.etc = {
+    "cage-script/kiosk.sh" = {
+      source = pkgs.writeShellScript "cage-script-kiosk" ''
+        /run/current-system/sw/bin/firefox --kiosk "https://nerdherd4043.org/"
+      '';
+      mode = "0755";
     };
+  };
+
+  services.cage = {
+    enable = true;
+    program = "/etc/cage-script/kiosk.sh";
+    extraArguments = [
+      "-d" # Don't render client-side decorations
+      "-m last" # Use only the last monitor connected
+      "-s" # Allow TTY switching
+    ];
+    environment = {
+      # WLR_LIBINPUT_NO_DEVICES = "1"; # Disable input devices (maybe?)
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_CRASHREPORTER_DISABLE = "1";
+    };
+    user = "nerdherd4043";
+  };
 
   systemd.services = {
     "cage-tty1" = {
