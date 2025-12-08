@@ -28,6 +28,7 @@ in
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
+    ./ios-tether.nix
     ./minecraft-server.nix
     ./networking.nix
     ./nginx.nix
