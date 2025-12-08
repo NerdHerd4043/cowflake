@@ -26,7 +26,7 @@
       nerdherd4043 = {
         isNormalUser = true;
         extraGroups = [
-          "networkManager"
+          "networkmanager"
           "video"
           "wheel"
         ];
