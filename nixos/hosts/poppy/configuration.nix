@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./disk-configuration.nix
@@ -39,68 +39,47 @@
     };
   };
 
-  programs.firefox = {
+  # Allow unfree chromium package for WideVine
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "chromium"
+      "chromium-unwrapped"
+      "widevine-cdm"
+    ];
+
+  environment.systemPackages = with pkgs; [
+    (chromium.override {
+      enableWideVine = true;
+      commandLineArgs = [
+        # Enable Manifest V2 support for ublock origin
+        "--disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled"
+      ];
+    })
+  ];
+
+  programs.chromium = {
     enable = true;
-    preferences = {
-      "browser.sessionstore.resume_from_crash" = false;
-      "browser.newtabpage.activity-stream.showSponsored" = false;
-      "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-      "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-      "browser.urlbar.quicksuggest.dataCollection.enabled" = false;
-    };
-
-    # https://wiki.nixos.org/wiki/Firefox#Advanced
-    languagePacks = [ "en-US" ];
-    policies = {
-      # Updates & Background Services
-      AppAutoUpdate = false;
-      BackgroundAppUpdate = false;
-
-      # Feature Disabling
-      DisableFirefoxStudies = true;
-      DisableFirefoxAccounts = true;
-      DisableFirefoxScreenshots = true;
-      DisableMasterPasswordCreation = true;
-      DisableProfileImport = true;
-      DisableProfileRefresh = true;
-      DisableSetDesktopBackground = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DisableFormHistory = true;
-      DisablePasswordReveal = true;
-
-      # Access Restrictions
-      BlockAboutConfig = false;
-      BlockAboutProfiles = true;
-
-      # UI and Behavior
-      DisplayMenuBar = "never";
-      DontCheckDefaultBrowser = true;
-      OfferToSaveLogins = false;
-
-      HttpsOnlyMode = "enabled";
-      SanitizeOnShutdown = true;
-      SkipTermsOfUse = true;
-
-      # Extensions
-      ExtensionSettings =
-        let
-          moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
-        in
-        {
-          "uBlock0@raymondhill.net" = {
-            install_url = moz "ublock-origin";
-            installation_mode = "force_installed";
-            updates_disabled = true;
-          };
-        };
+    extensions = [
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx" # ublock origin
+    ];
+    extraOpts = {
+      "BrowserSignin" = 0;
+      "SyncDisabled" = true;
+      "PasswordManagerEnabled" = false;
+      "HttpsOnlyMode" = "force_enabled";
     };
   };
 
   environment.etc = {
+    # Script that cage runs for kiosk mode.
+    # Editable, but resets to the following on system build:
     "cage-script/kiosk.sh" = {
       source = pkgs.writeShellScript "cage-script-kiosk" ''
-        /run/current-system/sw/bin/firefox --kiosk "https://nerdherd4043.org/"
+
+        URL="https://nerdherd4043.org/"
+
+        /run/current-system/sw/bin/chromium --hide-scrollbars --kiosk "$URL"
       '';
       mode = "0755";
     };
@@ -116,16 +95,13 @@
     ];
     environment = {
       # WLR_LIBINPUT_NO_DEVICES = "1"; # Disable input devices (maybe?)
-      MOZ_ENABLE_WAYLAND = "1";
-      MOZ_CRASHREPORTER_DISABLE = "1";
+      NIXOS_OZONE_WL = "1";
     };
     user = "nerdherd4043";
   };
 
   systemd.services = {
     "cage-tty1" = {
-      # Wait 5 seconds to start the browser
-      preStart = "sleep 5";
       # Always restart the browser when closed
       serviceConfig.Restart = "always";
     };
