@@ -24,6 +24,7 @@ in
       lazygit
       neovim
       nh
+      tmux
       usbutils
     ];
   };
