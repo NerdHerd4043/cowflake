@@ -102,6 +102,8 @@
 
   systemd.services = {
     "cage-tty1" = {
+      # Only start after network is active
+      after = [ "network.target" ];
       # Always restart the browser when closed
       serviceConfig.Restart = "always";
     };
