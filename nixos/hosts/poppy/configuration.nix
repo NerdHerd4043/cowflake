@@ -76,10 +76,15 @@
     # Editable, but resets to the following on system build:
     "cage-script/kiosk.sh" = {
       source = pkgs.writeShellScript "cage-script-kiosk" ''
+        # URL to open:
+        URL="https://nerdherd4043.org"
 
-        URL="https://nerdherd4043.org/"
+        # Run chromium in kiosk mode:
+        /run/current-system/sw/bin/chromium --hide-scrollbars --kiosk "$URL" &
 
-        /run/current-system/sw/bin/chromium --hide-scrollbars --kiosk "$URL"
+        # Fullscreen the video after 10 seconds by pressing "f"
+        sleep 10
+        ${lib.getExe pkgs.wtype} f
       '';
       mode = "0755";
     };
