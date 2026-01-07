@@ -27,6 +27,7 @@ in
       interval = "5min";
       ssl = true;
       usev4 = "webv4, webv4='https://cloudflare.com/cdn-cgi/trace', webv4-skip='ip= '";
+      usev6 = "disabled";
       protocol = "cloudflare";
       zone = "nerdherd4043.org";
       username = "token";
