@@ -7,8 +7,6 @@
 let
   cfg = config.herd;
   inherit (lib)
-    concatStringsSep
-    match
     mkDefault
     mkEnableOption
     mkIf
@@ -20,7 +18,7 @@ let
   # Takes the lastModifiedDate which is YYYYMMDDHHmmss
   # and converts it into YYYY-MM-DD.
   # Assumes source is entirely digits.
-  date = concatStringsSep "-" (match "^(.{4})(.{2})(.{2}).*$" self.lastModifiedDate);
+  date = lib.concatStringsSep "-" (lib.match "^(.{4})(.{2})(.{2}).*$" self.lastModifiedDate);
 in
 {
   imports = [
