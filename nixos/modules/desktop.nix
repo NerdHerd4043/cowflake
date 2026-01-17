@@ -16,6 +16,7 @@ in
   config = mkIf cfg.enable {
     herd = {
       audio.enable = mkDefault true;
+      firefox.enable = mkDefault true;
       plymouth.enable = mkDefault true;
       printing.enable = mkDefault true;
     };
