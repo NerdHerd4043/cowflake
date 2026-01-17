@@ -38,6 +38,7 @@ in
     ./ddclient.nix
     ./desktop.nix
     ./fail2ban.nix
+    ./firefox.nix
     ./grub.nix
     ./ios-tether.nix
     ./minecraft-server.nix
