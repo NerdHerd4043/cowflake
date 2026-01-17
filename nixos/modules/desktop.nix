@@ -17,6 +17,7 @@ in
     herd = {
       audio.enable = mkDefault true;
       plymouth.enable = mkDefault true;
+      printing.enable = mkDefault true;
     };
 
     services.displayManager.sddm = {
