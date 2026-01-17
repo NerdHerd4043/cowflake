@@ -35,6 +35,7 @@ in
     ./boot.nix
     ./ddclient.nix
     ./desktop.nix
+    ./firefox.nix
     ./grub.nix
     ./ios-tether.nix
     ./minecraft-server.nix
