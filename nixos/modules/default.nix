@@ -43,7 +43,6 @@ in
 
   config = {
     herd = mkIf cfg.defaults {
-      audio.enable = mkTrue;
       boot.enable = mkTrue;
       networking.enable = mkTrue;
       nix.enable = mkTrue;

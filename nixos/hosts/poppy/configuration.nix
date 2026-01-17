@@ -6,6 +6,7 @@
   ];
 
   herd = {
+    audio.enable = true;
     networking.wifi.enable = true;
     tailscale.enable = true;
   };
