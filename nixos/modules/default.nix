@@ -53,5 +53,8 @@ in
       id = mkDefault "cowflake";
       version = mkDefault "${date}-${self.shortRev or self.dirtyShortRev or "no-rev"}";
     };
+
+    time.timeZone = "America/Los_Angeles";
+    i18n.defaultLocale = "en_US.UTF-8";
   };
 }
