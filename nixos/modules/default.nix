@@ -43,6 +43,7 @@ in
     ./nix.nix
     ./packages.nix
     ./plymouth.nix
+    ./printing.nix
     ./site-preview.nix
     ./systemd-boot.nix
     ./tailscale.nix
