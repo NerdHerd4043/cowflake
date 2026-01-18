@@ -18,6 +18,7 @@ let
 in
 {
   imports = [
+    ./standalone.nix
     ./vscode.nix
   ];
 
