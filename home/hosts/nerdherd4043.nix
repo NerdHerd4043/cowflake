@@ -1,6 +1,9 @@
-{ pkgs, ... }:
-
+{ self, pkgs, ... }:
 {
+  imports = [
+    "${self}/home/modules"
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nerdherd4043";
@@ -42,31 +45,6 @@
     lazygit
     micro
   ];
-
-  # Install and configure Visual Studio Code
-  programs.vscode = {
-    enable = true;
-    # Define some extensions to install by default
-    extensions = with pkgs.vscode-extensions; [
-      # Vim keybindings
-      vscodevim.vim
-      # Markdown?
-      yzhang.markdown-all-in-one
-      # Nix syntax highlighting and formatting
-      jnoortheen.nix-ide
-    ];
-    # Add extra packages that VS Code might need
-    package = pkgs.vscode.fhsWithPackages (
-      ps: with ps; [
-        # rustup
-        zlib
-        openssl.dev
-        pkg-config
-        nil
-        nixfmt
-      ]
-    );
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
