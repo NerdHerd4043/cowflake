@@ -100,6 +100,17 @@
               ./nixos/hosts/caveserver/configuration.nix
             ];
           };
+
+          laptop-24 = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit self inputs; };
+            modules = [
+              ./nixos/modules
+              ./nixos/hosts/laptop-24/configuration.nix
+              inputs.disko.nixosModules.disko
+              inputs.home-manager.nixosModules.default
+            ];
+          };
         };
       };
     };
