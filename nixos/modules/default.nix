@@ -13,6 +13,13 @@ let
     mkOverride
     ;
 
+  /**
+    This creates a default "true" value that can be overridden by `lib.mkDefault true`, as:
+    ```nix
+    lib.mkDefault = lib.mkOverride 1000;
+    lib.mkForce = lib.mkOverride 50;
+    ```
+  */
   mkTrue = mkOverride 1100 true;
 
   # Takes the lastModifiedDate which is YYYYMMDDHHmmss
