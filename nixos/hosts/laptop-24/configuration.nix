@@ -11,6 +11,22 @@
 
   networking.hostName = "laptop-24";
 
+  users = {
+    mutableUsers = false;
+    users = {
+      nerdherd4043 = {
+        isNormalUser = true;
+        extraGroups = [
+          "networkmanager"
+          "video"
+          "wheel"
+        ];
+        hashedPassword = "$y$j9T$BN5fvfmYxHqJVGoHUmle.0$fxCfLjaVXeRYRBB1Zju5OEQN.tNic88jyLq.wYbaqZD";
+        openssh.authorizedKeys.keys = [ ];
+      };
+    };
+  };
+
   # For i3-4005U:
   hardware.intel-gpu-tools.enable = true;
   hardware.graphics = {
