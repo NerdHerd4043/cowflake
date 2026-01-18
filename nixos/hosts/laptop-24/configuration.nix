@@ -7,6 +7,12 @@
 
   herd = {
     desktop.enable = true;
+    home-manager.enable = true;
+    packages.unfree.predicate = [
+      "intel-ocl"
+      "code"
+      "vscode"
+    ];
   };
 
   networking.hostName = "laptop-24";
