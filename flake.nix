@@ -125,6 +125,20 @@
               ./nixos/hosts/caveserver/configuration.nix
             ];
           };
+
+          nh-laptop-23 = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit self inputs; };
+            modules = [
+              {
+                networking.hostName = "nh-laptop-23";
+                system.stateVersion = "25.11";
+              }
+              ./nixos/modules
+              ./nixos/modules/home-manager.nix
+              ./nixos/hardware/latitude-3550/configuration.nix
+            ];
+          };
         };
 
         githubActions =
