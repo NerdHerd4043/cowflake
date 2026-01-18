@@ -29,5 +29,8 @@ in
     herd = mkIf cfg.defaults {
       vscode.enable = mkTrue;
     };
+
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
   };
 }

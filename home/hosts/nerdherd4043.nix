@@ -81,7 +81,4 @@
     # EDITOR = "emacs";
     FLAKE = "~/.config/home-manager";
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
