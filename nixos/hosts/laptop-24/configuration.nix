@@ -27,6 +27,11 @@
     };
   };
 
+  # Home Manager Config:
+  home-manager.users = {
+    nerdherd4043 = import "${self}/home/hosts/nerdherd4043.nix";
+  };
+
   # For i3-4005U:
   hardware.intel-gpu-tools.enable = true;
   hardware.graphics = {
