@@ -21,7 +21,7 @@ in
       };
 
       loader = {
-        timeout = 2;
+        timeout = mkDefault 2;
         efi.canTouchEfiVariables = mkDefault true;
       };
     };

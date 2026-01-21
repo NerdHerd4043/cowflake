@@ -40,6 +40,7 @@ in
     ./nginx.nix
     ./nix.nix
     ./packages.nix
+    ./plymouth.nix
     ./site-preview.nix
     ./systemd-boot.nix
     ./tailscale.nix
