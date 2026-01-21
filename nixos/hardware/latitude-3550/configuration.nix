@@ -8,7 +8,7 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-configuration.nix
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   herd = {
