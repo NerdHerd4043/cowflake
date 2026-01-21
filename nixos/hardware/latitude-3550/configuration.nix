@@ -64,4 +64,6 @@
     LIBVA_DRIVER_NAME = "i965";
     VDPAU_DRIVER = "va_gl";
   };
+
+  services.libinput.touchpad.naturalScrolling = true;
 }
