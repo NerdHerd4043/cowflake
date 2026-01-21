@@ -24,12 +24,10 @@ in
       # Define some extensions to install by default
       profiles.default = {
         extensions = with pkgs.vscode-extensions; [
-          # Vim keybindings
-          vscodevim.vim
-          # Markdown?
-          yzhang.markdown-all-in-one
-          # Nix syntax highlighting and formatting
-          jnoortheen.nix-ide
+          jnoortheen.nix-ide # Nix syntax highlighting and formatting
+          vscodevim.vim # Vim keybindings
+          wpilibsuite.vscode-wpilib # wpilib
+          yzhang.markdown-all-in-one # Markdown?
         ];
       };
       # Add extra packages that VS Code might need
