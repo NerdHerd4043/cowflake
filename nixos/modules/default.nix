@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   self,
@@ -45,6 +46,7 @@ in
     ./systemd-boot.nix
     ./tailscale.nix
     ./wiki.nix
+    inputs.agenix.nixosModules.default
   ];
 
   options.herd.defaults = mkEnableOption "herd defaults" // {
