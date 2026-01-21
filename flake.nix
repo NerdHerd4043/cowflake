@@ -105,10 +105,10 @@
             system = "x86_64-linux";
             specialArgs = { inherit self inputs; };
             modules = [
+              { networking.hostName = "laptop-24"; }
               ./nixos/modules
-              ./nixos/hosts/laptop-24/configuration.nix
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.default
+              ./nixos/modules/home-manager.nix
+              ./nixos/hardware/latitude-3550/configuration.nix
             ];
           };
         };
