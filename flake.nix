@@ -23,6 +23,10 @@
         home-manager.follows = "home-manager";
       };
     };
+    frc-nix = {
+      url = "github:frc4451/frc-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
