@@ -31,7 +31,7 @@ writeShellApplication {
       # Create the directory where sshd expects to find the host keys
       install -d -m755 "$temp/etc/ssh"
 
-      ssh-keygen -t ed25519 -f "$temp/etc/ssh/ssh_host_ed25519_key" -N "" -C "root"
+      ssh-keygen -t ed25519 -f "$temp/etc/ssh/ssh_host_ed25519_key" -N "" -C "root@$1"
 
       pub=$(cat "$temp/etc/ssh/ssh_host_ed25519_key.pub")
 
@@ -48,7 +48,7 @@ writeShellApplication {
         # Install NixOS to the host system with our secrets
         nixos-anywhere \
         --extra-files "$temp" \
-        --flake "$1" \
+        --flake .#"$1" \
         --target-host "$2"
       fi
     '';
