@@ -44,6 +44,11 @@
     nerdherd4043 = import "${self}/home/hosts/nerdherd4043.nix";
   };
 
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "nerdherd4043";
+  };
+
   # For i3-4005U:
   hardware.intel-gpu-tools.enable = true;
   hardware.graphics = {
