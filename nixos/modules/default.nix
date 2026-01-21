@@ -41,6 +41,7 @@ in
     ./nix.nix
     ./packages.nix
     ./site-preview.nix
+    ./systemd-boot.nix
     ./tailscale.nix
     ./wiki.nix
   ];
