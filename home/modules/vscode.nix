@@ -34,13 +34,18 @@ in
       package = pkgs.vscode.fhsWithPackages (
         ps: with ps; [
           # rustup
-          zlib
-          openssl.dev
-          pkg-config
           nil
           nixfmt
+          openssl.dev
+          pkg-config
+          temurin-bin-17
+          zlib
         ]
       );
     };
+
+    home.packages = with pkgs; [
+      temurin-bin-17
+    ];
   };
 }
