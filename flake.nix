@@ -101,11 +101,11 @@
             ];
           };
 
-          laptop-24 = nixpkgs.lib.nixosSystem {
+          laptop-08 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit self inputs; };
             modules = [
-              { networking.hostName = "laptop-24"; }
+              { networking.hostName = "laptop-08"; }
               ./nixos/modules
               ./nixos/modules/home-manager.nix
               ./nixos/hardware/latitude-3550/configuration.nix
