@@ -33,6 +33,7 @@ in
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
+    ./grub.nix
     ./ios-tether.nix
     ./minecraft-server.nix
     ./networking.nix
@@ -51,6 +52,7 @@ in
   config = {
     herd = mkIf cfg.defaults {
       boot.enable = mkTrue;
+      boot.grub.enable = mkTrue;
       networking.enable = mkTrue;
       nix.enable = mkTrue;
       packages.enable = mkTrue;

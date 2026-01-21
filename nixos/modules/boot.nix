@@ -22,13 +22,7 @@ in
 
       loader = {
         timeout = 2;
-        efi.canTouchEfiVariables = true;
-        grub = {
-          enable = true;
-          efiSupport = true;
-          device = "nodev";
-          splashImage = null;
-        };
+        efi.canTouchEfiVariables = mkDefault true;
       };
     };
   };
