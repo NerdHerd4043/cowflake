@@ -13,6 +13,8 @@
 
   herd = {
     desktop.enable = true;
+    boot.grub.enable = false;
+    boot.systemd.enable = true;
     home-manager.enable = true;
     packages.unfree.predicate = [
       "intel-ocl"
