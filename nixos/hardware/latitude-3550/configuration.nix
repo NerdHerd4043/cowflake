@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{
+  inputs,
+  self,
+  pkgs,
+  ...
+}:
 {
   imports = [
+    inputs.disko.nixosModules.disko
     ./disk-configuration.nix
     # ./hardware-configuration.nix
   ];
@@ -14,8 +20,6 @@
       "vscode"
     ];
   };
-
-  networking.hostName = "laptop-24";
 
   users = {
     mutableUsers = false;
