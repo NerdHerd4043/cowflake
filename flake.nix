@@ -105,7 +105,10 @@
             system = "x86_64-linux";
             specialArgs = { inherit self inputs; };
             modules = [
-              { networking.hostName = "laptop-08"; }
+              {
+                networking.hostName = "laptop-08";
+                system.stateVersion = "25.11";
+              }
               ./nixos/modules
               ./nixos/modules/home-manager.nix
               ./nixos/hardware/latitude-3550/configuration.nix
