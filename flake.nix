@@ -101,12 +101,12 @@
             ];
           };
 
-          laptop-08 = nixpkgs.lib.nixosSystem {
+          nh-laptop-23 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit self inputs; };
             modules = [
               {
-                networking.hostName = "laptop-08";
+                networking.hostName = "nh-laptop-23";
                 system.stateVersion = "25.11";
               }
               ./nixos/modules
