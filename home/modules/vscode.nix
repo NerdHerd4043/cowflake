@@ -21,18 +21,6 @@ in
     # Install and configure Visual Studio Code
     programs.vscode = {
       enable = true;
-      # Define some extensions to install by default
-      profiles.default = {
-        extensions = with pkgs.vscode-extensions; [
-          jnoortheen.nix-ide # Nix syntax highlighting and formatting
-          redhat.java # Java support
-          vscjava.vscode-java-debug # Java support
-          vscjava.vscode-java-dependency # Java support
-          vscodevim.vim # Vim keybindings
-          wpilibsuite.vscode-wpilib # wpilib
-          yzhang.markdown-all-in-one # Markdown?
-        ];
-      };
       # Add extra packages that VS Code might need
       package = pkgs.vscode.fhsWithPackages (
         ps: with ps; [
@@ -45,6 +33,23 @@ in
           zlib
         ]
       );
+      # Define some extensions to install by default
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          jnoortheen.nix-ide # Nix syntax highlighting and formatting
+          redhat.java # Java support
+          vscjava.vscode-java-debug # Java support
+          vscjava.vscode-java-dependency # Java support
+          vscodevim.vim # Vim keybindings
+          wpilibsuite.vscode-wpilib # wpilib
+          yzhang.markdown-all-in-one # Markdown?
+        ];
+        userSettings = {
+          "[nix]"."editor.tabSize" = 2;
+          "chat.disableAIFeatures" = true;
+          "update.mode" = "none";
+        };
+      };
     };
 
     home.packages = with pkgs; [
