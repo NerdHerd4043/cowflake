@@ -18,11 +18,19 @@
               };
             };
             root = {
-              size = "100%";
+              end = "-16G";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
+              };
+            };
+            swap = {
+              size = "100%";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true;
               };
             };
           };
@@ -30,10 +38,4 @@
       };
     };
   };
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 16 * 1024; # 16 GB
-    }
-  ];
 }
