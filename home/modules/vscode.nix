@@ -25,6 +25,9 @@ in
       profiles.default = {
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide # Nix syntax highlighting and formatting
+          redhat.java # Java support
+          vscjava.vscode-java-debug # Java support
+          vscjava.vscode-java-dependency # Java support
           vscodevim.vim # Vim keybindings
           wpilibsuite.vscode-wpilib # wpilib
           yzhang.markdown-all-in-one # Markdown?
