@@ -65,5 +65,10 @@
     VDPAU_DRIVER = "va_gl";
   };
 
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin-17;
+  };
+
   services.libinput.touchpad.naturalScrolling = true;
 }
