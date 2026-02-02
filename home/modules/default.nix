@@ -18,6 +18,7 @@ let
 in
 {
   imports = [
+    ./packages.nix
     ./standalone.nix
     ./vscode.nix
   ];
@@ -29,6 +30,7 @@ in
   config = {
     herd = mkIf cfg.defaults {
       vscode.enable = mkTrue;
+      packages.enable = mkTrue;
     };
 
     # Let Home Manager install and manage itself.
