@@ -17,16 +17,10 @@ in
     herd = {
       audio.enable = mkDefault true;
       firefox.enable = mkDefault true;
+      kde-plasma.enable = mkDefault true;
       plymouth.enable = mkDefault true;
       printing.enable = mkDefault true;
     };
-
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-
-    services.desktopManager.plasma6.enable = true;
 
     hardware.bluetooth.enable = true;
 
