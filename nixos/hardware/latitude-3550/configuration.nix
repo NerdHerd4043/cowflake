@@ -33,6 +33,7 @@
           "video"
           "wheel"
         ];
+        # Not a secure password. Go nuts, scrapers.
         hashedPassword = "$y$j9T$BN5fvfmYxHqJVGoHUmle.0$fxCfLjaVXeRYRBB1Zju5OEQN.tNic88jyLq.wYbaqZD";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJIjvv25XXwfztlBSEnQRT6f/27wmc/6R+rMRnUaqneY"
