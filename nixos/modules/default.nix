@@ -47,6 +47,7 @@ in
     ./tailscale.nix
     ./wiki.nix
     inputs.agenix.nixosModules.default
+    inputs.disko.nixosModules.disko
   ];
 
   options.herd.defaults = mkEnableOption "herd defaults" // {

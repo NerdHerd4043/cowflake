@@ -89,7 +89,6 @@
             modules = [
               ./nixos/modules
               ./nixos/hosts/poppy/configuration.nix
-              inputs.disko.nixosModules.disko
             ];
           };
 
@@ -99,7 +98,6 @@
             modules = [
               ./nixos/modules
               ./nixos/hosts/caveserver/configuration.nix
-              inputs.disko.nixosModules.disko
             ];
           };
         };
