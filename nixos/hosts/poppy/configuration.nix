@@ -9,6 +9,7 @@
     audio.enable = true;
     networking.wifi.enable = true;
     tailscale.enable = true;
+    plymouth.enable = true;
   };
 
   networking.hostName = "poppy";
