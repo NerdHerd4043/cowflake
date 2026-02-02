@@ -21,17 +21,13 @@ in
       printing.enable = mkDefault true;
     };
 
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-
-    # services.xserver.enable = mkDefault true;
-
-    services.desktopManager.plasma6.enable = true;
-
     hardware.bluetooth.enable = true;
 
     services.dbus.implementation = "broker";
+
+    services.xserver.enable = true;
+    services.displayManager.defaultSession = "cinnamon";
+    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.desktopManager.cinnamon.enable = true;
   };
 }
