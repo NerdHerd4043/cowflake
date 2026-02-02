@@ -42,6 +42,7 @@ in
     ./firefox.nix
     ./grub.nix
     ./ios-tether.nix
+    ./kde-plasma.nix
     ./minecraft-server.nix
     ./networking.nix
     ./nginx.nix
