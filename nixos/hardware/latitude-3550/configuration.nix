@@ -71,5 +71,7 @@
     package = pkgs.temurin-bin-17;
   };
 
+  services.xserver.videoDrivers = [ "modesetting" ];
+
   services.libinput.touchpad.naturalScrolling = true;
 }
