@@ -18,6 +18,7 @@
     acme.enable = true;
     nginx.enable = true;
     site-preview.enable = true;
+    fail2ban.enable = true;
   };
 
   networking = {
