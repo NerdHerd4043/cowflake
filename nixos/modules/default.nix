@@ -34,6 +34,7 @@ in
     ./audio.nix
     ./boot.nix
     ./ddclient.nix
+    ./fail2ban.nix
     ./grub.nix
     ./ios-tether.nix
     ./minecraft-server.nix
