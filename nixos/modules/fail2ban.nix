@@ -8,9 +8,7 @@ let
 in
 {
   options.herd.fail2ban = {
-    enable = mkEnableOption "fail2ban module" // {
-      default = config.services.fail2ban.enable;
-    };
+    enable = mkEnableOption "fail2ban module";
   };
 
   config = mkIf cfg.enable {
