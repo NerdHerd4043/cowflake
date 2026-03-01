@@ -33,6 +33,7 @@ in
     ./acme.nix
     ./audio.nix
     ./boot.nix
+    ./cinnamon.nix
     ./ddclient.nix
     ./desktop.nix
     ./fail2ban.nix
