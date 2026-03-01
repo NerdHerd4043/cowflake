@@ -17,6 +17,7 @@ in
     herd = {
       audio.enable = mkDefault true;
       firefox.enable = mkDefault true;
+      cinnamon.enable = mkDefault true;
       plymouth.enable = mkDefault true;
       printing.enable = mkDefault true;
     };
@@ -24,14 +25,5 @@ in
     hardware.bluetooth.enable = true;
 
     services.dbus.implementation = "broker";
-
-    services.xserver.enable = true;
-    services.displayManager.defaultSession = "cinnamon";
-    services.xserver.displayManager.lightdm.enable = true;
-    services.xserver.desktopManager.cinnamon.enable = true;
-
-    programs.seahorse.enable = true;
-    security.pam.services.login.enableGnomeKeyring = true;
-    services.gnome.gnome-keyring.enable = true;
   };
 }
