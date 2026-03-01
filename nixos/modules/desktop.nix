@@ -17,7 +17,7 @@ in
     herd = {
       audio.enable = mkDefault true;
       firefox.enable = mkDefault true;
-      cinnamon.enable = mkDefault true;
+      kde-plasma.enable = mkDefault true;
       plymouth.enable = mkDefault true;
       printing.enable = mkDefault true;
     };
