@@ -34,6 +34,7 @@ in
     ./attic.nix
     ./audio.nix
     ./boot.nix
+    ./cinnamon.nix
     ./comin.nix
     ./ddclient.nix
     ./desktop.nix
