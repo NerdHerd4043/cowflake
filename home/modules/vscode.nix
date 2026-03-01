@@ -31,6 +31,7 @@ in
           pkg-config
           temurin-bin-17
           zlib
+          wpilib.wpilib-utility
         ]
       );
       # Define some extensions to install by default
@@ -54,6 +55,7 @@ in
 
     home.packages = with pkgs; [
       temurin-bin-17
+      wpilib.wpilib-utility
     ];
   };
 }
