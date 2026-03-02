@@ -11,6 +11,8 @@ let
     mkEnableOption
     mkIf
     ;
+
+  java' = pkgs.temurin-bin-17;
 in
 {
   options.herd.vscode = {
@@ -22,17 +24,22 @@ in
     programs.vscode = {
       enable = true;
       # Add extra packages that VS Code might need
-      package = pkgs.vscode.fhsWithPackages (
-        ps: with ps; [
-          # rustup
-          nil
-          nixfmt
-          openssl.dev
-          pkg-config
-          temurin-bin-17
-          zlib
-        ]
-      );
+      package =
+        (pkgs.vscode.fhsWithPackages (
+          ps: with ps; [
+            # rustup
+            nil
+            nixfmt
+            openssl.dev
+            pkg-config
+            java'
+            zlib
+          ]
+        )).overrideAttrs
+          (oa: {
+            extraBwrapArgs = (oa.extraBwrapArgs or [ ]) ++ [ "--setenv JAVA_HOME ${java'}" ];
+          });
+
       # Define some extensions to install by default
       profiles.default = {
         extensions = with pkgs.vscode-extensions; [
@@ -52,8 +59,8 @@ in
       };
     };
 
-    home.packages = with pkgs; [
-      temurin-bin-17
+    home.packages = [
+      java'
     ];
   };
 }
