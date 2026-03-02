@@ -20,6 +20,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       bambu-studio
+      localsend
       wpilib.roborioteamnumbersetter
     ];
   };
