@@ -58,6 +58,8 @@
         "--disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled"
       ];
     })
+
+    wtype
   ];
 
   programs.chromium = {
