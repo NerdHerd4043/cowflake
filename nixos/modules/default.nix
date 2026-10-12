@@ -33,6 +33,7 @@ in
     ./acme.nix
     ./audio.nix
     ./boot.nix
+    ./comin.nix
     ./ddclient.nix
     ./fail2ban.nix
     ./grub.nix
@@ -48,6 +49,7 @@ in
     ./tailscale.nix
     ./wiki.nix
     inputs.agenix.nixosModules.default
+    inputs.comin.nixosModules.comin
     inputs.disko.nixosModules.disko
   ];
 
@@ -59,6 +61,7 @@ in
     herd = mkIf cfg.defaults {
       boot.enable = mkTrue;
       boot.grub.enable = mkTrue;
+      comin.enable = mkTrue;
       networking.enable = mkTrue;
       nix.enable = mkTrue;
       packages.enable = mkTrue;
