@@ -114,12 +114,18 @@
           };
         };
 
-        githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
-          checks.x86_64-linux = {
-            poppy = self.nixosConfigurations.poppy.config.system.build.toplevel;
-            caveserver = self.nixosConfigurations.caveserver.config.system.build.toplevel;
+        githubActions =
+          let
+            checkSystems =
+              systems:
+              nixpkgs.lib.genAttrs systems (name: self.nixosConfigurations.${name}.config.system.build.toplevel);
+          in
+          inputs.nix-github-actions.lib.mkGithubMatrix {
+            checks.x86_64-linux = checkSystems [
+              "poppy"
+              "caveserver"
+            ];
           };
-        };
       };
     };
 }
