@@ -27,7 +27,10 @@ in
         {
           name = "origin";
           url = "https://github.com/NerdHerd4043/cowflake.git";
-          branches.main.name = "main";
+          branches = {
+            main.name = "main";
+            testing.name = "testing/${config.services.comin.hostname}";
+          };
         }
       ];
 
