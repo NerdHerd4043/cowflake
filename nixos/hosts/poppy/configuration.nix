@@ -10,6 +10,7 @@
     networking.wifi.enable = true;
     tailscale.enable = true;
     plymouth.enable = true;
+    comin.timeoutMin = 60;
   };
 
   networking.hostName = "poppy";
