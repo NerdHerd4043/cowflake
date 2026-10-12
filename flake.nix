@@ -31,6 +31,10 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-github-actions = {
+      url = "github:nix-community/nix-github-actions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -114,6 +118,19 @@
             ];
           };
         };
+
+        githubActions =
+          let
+            checkSystems =
+              systems:
+              nixpkgs.lib.genAttrs systems (name: self.nixosConfigurations.${name}.config.system.build.toplevel);
+          in
+          inputs.nix-github-actions.lib.mkGithubMatrix {
+            checks.x86_64-linux = checkSystems [
+              "poppy"
+              "caveserver"
+            ];
+          };
       };
     };
 }
