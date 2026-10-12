@@ -31,6 +31,7 @@ in
 {
   imports = [
     ./acme.nix
+    ./attic.nix
     ./audio.nix
     ./boot.nix
     ./comin.nix

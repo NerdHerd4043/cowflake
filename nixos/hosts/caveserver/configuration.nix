@@ -19,6 +19,7 @@
     nginx.enable = true;
     site-preview.enable = true;
     fail2ban.enable = true;
+    attic.enable = true;
   };
 
   networking = {
