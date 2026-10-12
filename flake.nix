@@ -33,6 +33,11 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [ "https://nix.cache.nerdherd4043.org/nixos" ];
+    extra-trusted-public-keys = [ "nixos:mFWAisT3ebb/Yv1pVs7vPGeftDUnFd6KyQ+2Y3oMHYY=" ];
+  };
+
   outputs =
     {
       self,
