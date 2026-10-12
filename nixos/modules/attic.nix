@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  self,
+  ...
+}:
 
 let
   cfg = config.herd.attic;
@@ -13,6 +18,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    age.secrets.attic-env.file = "${self}/secrets/attic-env.age";
+
     services.atticd = {
       enable = true;
       environmentFile = config.age.secrets.attic-env.path;

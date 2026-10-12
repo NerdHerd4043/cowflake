@@ -18,6 +18,7 @@ let
   ];
 in
 {
+  "attic-env.age".publicKeys = keys;
   "bryan-pass.age".publicKeys = keys;
   "cf-dns-token.age".publicKeys = keys;
   "nullcube-pass.age".publicKeys = keys;
