@@ -33,6 +33,7 @@ in
 
     services.nginx = {
       enable = true;
+      clientMaxBodySize = "200m";
       virtualHosts = {
         "nix.cache.nerdherd4043.org" = {
           forceSSL = true;
