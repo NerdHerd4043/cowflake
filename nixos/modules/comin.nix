@@ -3,13 +3,21 @@
 let
   cfg = config.herd.comin;
   inherit (lib)
+    mkDefault
     mkEnableOption
     mkIf
+    mkOption
+    types
     ;
 in
 {
   options.herd.comin = {
     enable = mkEnableOption "herd comin";
+    timeoutMin = mkOption {
+      type = types.int;
+      default = 30;
+      description = "Maximum duration in minutes for a Nix build before comin cancels it.";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -22,6 +30,9 @@ in
           branches.main.name = "main";
         }
       ];
+
+      buildAttemptsLimit = 2;
+      buildTimeout = mkDefault (cfg.timeoutMin * 60);
     };
   };
 }
