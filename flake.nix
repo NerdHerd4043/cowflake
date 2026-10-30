@@ -125,6 +125,8 @@
               {
                 networking.hostName = "nh-laptop-23";
                 system.stateVersion = "25.11";
+
+                herd.comin.branches.main.name = "full-system";
               }
               ./nixos/modules
               ./nixos/modules/home-manager.nix
