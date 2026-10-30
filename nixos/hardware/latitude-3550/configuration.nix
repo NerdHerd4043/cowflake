@@ -15,6 +15,7 @@
     desktop.enable = true;
     boot.grub.enable = false;
     boot.systemd.enable = true;
+    comin.branches.main.operation = "boot";
     home-manager.enable = true;
     packages.unfree.predicate = [
       "intel-ocl"
