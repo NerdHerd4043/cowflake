@@ -20,6 +20,7 @@
       "intel-ocl"
       "code"
       "vscode"
+      "bambu-studio"
     ];
   };
 
