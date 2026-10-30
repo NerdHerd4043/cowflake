@@ -18,6 +18,16 @@ in
       default = 30;
       description = "Maximum duration in minutes for a Nix build before comin cancels it.";
     };
+    branches = {
+      main.name = mkOption {
+        default = "main";
+        type = types.str;
+      };
+      testing.name = mkOption {
+        default = "testing/${config.services.comin.hostname}";
+        type = types.str;
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -27,10 +37,7 @@ in
         {
           name = "origin";
           url = "https://github.com/NerdHerd4043/cowflake.git";
-          branches = {
-            main.name = "main";
-            testing.name = "testing/${config.services.comin.hostname}";
-          };
+          inherit (cfg) branches;
         }
       ];
 
