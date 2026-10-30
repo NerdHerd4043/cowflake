@@ -18,15 +18,13 @@ in
       default = 30;
       description = "Maximum duration in minutes for a Nix build before comin cancels it.";
     };
-    branches = {
-      main.name = mkOption {
-        default = "main";
-        type = types.str;
+    branches = mkOption {
+      type = with types; attrsOf anything;
+      default = {
+        main.name = "main";
+        testing.name = "testing/${config.services.comin.hostname}";
       };
-      testing.name = mkOption {
-        default = "testing/${config.services.comin.hostname}";
-        type = types.str;
-      };
+      description = "Exposed options for services.comin.remotes.*.branches";
     };
   };
 
