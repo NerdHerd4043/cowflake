@@ -63,6 +63,7 @@
             inherit system;
             overlays = [
               inputs.agenix.overlays.default
+              inputs.comin.overlays.default
             ];
             config.allowUnfree = true;
           };
@@ -77,6 +78,7 @@
             default = pkgs.mkShell {
               packages = with pkgs; [
                 agenix
+                comin
                 home-manager
                 nh
                 nixos-anywhere
