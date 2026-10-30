@@ -129,6 +129,7 @@
                 system.stateVersion = "25.11";
 
                 herd.comin.branches.main.name = "full-system";
+                herd.comin.branches.testing.name = "testing/nh-laptop-23";
               }
               ./nixos/modules
               ./nixos/modules/home-manager.nix
