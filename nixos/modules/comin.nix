@@ -41,6 +41,12 @@ in
 
       buildAttemptsLimit = 2;
       buildTimeout = mkDefault (cfg.timeoutMin * 60);
+
+      desktop = {
+        enable = mkDefault config.herd.desktop.enable;
+        title = "NixOS Updates (comin)";
+      };
+      buildConfirmer.mode = mkIf config.herd.desktop.enable "auto";
     };
   };
 }
