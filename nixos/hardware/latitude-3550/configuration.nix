@@ -22,6 +22,7 @@
       "code"
       "vscode"
       "bambu-studio"
+      "rev-hardware-client-2"
     ];
   };
 
@@ -76,6 +77,10 @@
         kcminputrc.Libinput."2"."7"."SynPS/2 Synaptics TouchPad".NaturalScroll = true;
       };
     }
+  ];
+
+  services.udev.packages = with pkgs; [
+    rev-hardware-client-2
   ];
 
   # Don't use up all resources to build derivations

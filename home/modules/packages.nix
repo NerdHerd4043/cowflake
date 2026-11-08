@@ -21,6 +21,7 @@ in
     home.packages = with pkgs; [
       bambu-studio
       localsend
+      rev-hardware-client-2
     ];
   };
 }
