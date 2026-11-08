@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789476793,
-        "narHash": "sha256-UIkQX/1dtjLJd14F88bOB6HSonQmqezch09WVA8Px+4=",
-        "owner": "frc4451",
+        "lastModified": 1794122555,
+        "narHash": "sha256-HeCno8HMRFl3xvgfskCG5X4uotiBbovLZxhnLQDOEGM=",
+        "owner": "nullcubee",
         "repo": "frc-nix",
-        "rev": "11fb42f3052cad3154c7ce0350df66f35c28e11e",
+        "rev": "1a87e6108a52f9c5c22655b345407effda106ef7",
         "type": "github"
       },
       "original": {
