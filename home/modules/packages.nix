@@ -22,6 +22,7 @@ in
       bambu-studio
       localsend
       wpilib.roborioteamnumbersetter
+      rev-hardware-client-2
     ];
   };
 }

@@ -22,6 +22,7 @@
       "code"
       "vscode"
       "bambu-studio"
+      "rev-hardware-client-2"
     ];
   };
 
@@ -71,4 +72,8 @@
   services.xserver.videoDrivers = [ "modesetting" ];
 
   services.libinput.touchpad.naturalScrolling = true;
+
+  services.udev.packages = with pkgs; [
+    rev-hardware-client-2
+  ];
 }
