@@ -31,6 +31,7 @@ in
         enable = true;
         title = "NixOS Updates (comin)";
       };
+      buildConfirmer.mode = mkDefault "auto";
     };
   };
 }
