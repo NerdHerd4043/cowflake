@@ -35,6 +35,7 @@ in
     ./audio.nix
     ./boot.nix
     ./comin.nix
+    ./comma.nix
     ./ddclient.nix
     ./fail2ban.nix
     ./grub.nix
@@ -63,6 +64,7 @@ in
       boot.enable = mkTrue;
       boot.grub.enable = mkTrue;
       comin.enable = mkTrue;
+      comma.enable = mkTrue;
       networking.enable = mkTrue;
       nix.enable = mkTrue;
       packages.enable = mkTrue;
