@@ -16,7 +16,10 @@ in
 {
   options.herd.vscode = {
     enable = mkEnableOption "herd vscode";
-    java.package = mkPackageOption pkgs "temurin-bin-17" { };
+    java = {
+      package = mkPackageOption pkgs "temurin-bin-17" { };
+      onPath = mkEnableOption "adding the selected java package to $PATH";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -59,7 +62,7 @@ in
       };
     };
 
-    home.packages = [
+    home.packages = mkIf cfg.java.onPath [
       cfg.java.package
     ];
   };
