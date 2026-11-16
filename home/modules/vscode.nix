@@ -35,7 +35,7 @@ in
             nixfmt
             openssl.dev
             pkg-config
-            java'
+            cfg.java.package
             zlib
           ]
         )).overrideAttrs
