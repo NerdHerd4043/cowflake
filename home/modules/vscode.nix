@@ -9,14 +9,14 @@ let
   cfg = config.herd.vscode;
   inherit (lib)
     mkEnableOption
+    mkPackageOption
     mkIf
     ;
-
-  java' = pkgs.temurin-bin-17;
 in
 {
   options.herd.vscode = {
     enable = mkEnableOption "herd vscode";
+    java.package = mkPackageOption pkgs "temurin-bin-17" { };
   };
 
   config = mkIf cfg.enable {
@@ -37,7 +37,7 @@ in
           ]
         )).overrideAttrs
           (oa: {
-            extraBwrapArgs = (oa.extraBwrapArgs or [ ]) ++ [ "--setenv JAVA_HOME ${java'}" ];
+            extraBwrapArgs = (oa.extraBwrapArgs or [ ]) ++ [ "--setenv JAVA_HOME ${cfg.java.package}" ];
           });
 
       # Define some extensions to install by default
@@ -60,7 +60,7 @@ in
     };
 
     home.packages = [
-      java'
+      cfg.java.package
     ];
   };
 }
