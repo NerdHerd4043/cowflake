@@ -1,0 +1,88 @@
+{
+  inputs,
+  self,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    inputs.disko.nixosModules.disko
+    ./disk-configuration.nix
+    ./hardware-configuration.nix
+  ];
+
+  herd = {
+    desktop.enable = true;
+    boot.grub.enable = false;
+    boot.systemd.enable = true;
+    comin.branches.main.operation = "boot";
+    home-manager.enable = true;
+    packages.unfree.predicate = [
+      "intel-ocl"
+      "code"
+      "vscode"
+      "bambu-studio"
+      "rev-hardware-client-2"
+    ];
+  };
+
+  users = {
+    mutableUsers = false;
+    users = {
+      nerdherd4043 = {
+        isNormalUser = true;
+        extraGroups = [
+          "networkmanager"
+          "video"
+          "wheel"
+        ];
+        # Not a secure password. Go nuts, scrapers.
+        hashedPassword = "$y$j9T$BN5fvfmYxHqJVGoHUmle.0$fxCfLjaVXeRYRBB1Zju5OEQN.tNic88jyLq.wYbaqZD";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJIjvv25XXwfztlBSEnQRT6f/27wmc/6R+rMRnUaqneY nh-laptops"
+        ];
+      };
+    };
+  };
+
+  # Home Manager Config:
+  home-manager.users = {
+    nerdherd4043 = import "${self}/home/hosts/nerdherd4043.nix";
+  };
+
+  # For i3-4005U:
+  hardware.intel-gpu-tools.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-vaapi-driver
+      intel-ocl
+    ];
+  };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "i965";
+    VDPAU_DRIVER = "va_gl";
+  };
+  services.xserver.videoDrivers = [ "modesetting" ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin-17;
+  };
+
+  # Set touchpad to use natural scrolling inside of KDE Plasma
+  home-manager.sharedModules = [
+    {
+      qt.kde.settings = {
+        kcminputrc.Libinput."2"."7"."SynPS/2 Synaptics TouchPad".NaturalScroll = true;
+      };
+    }
+  ];
+
+  services.udev.packages = with pkgs; [
+    rev-hardware-client-2
+  ];
+
+  # Don't use up all resources to build derivations
+  nix.settings.cores = 1;
+}

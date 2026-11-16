@@ -34,15 +34,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1794468740,
-        "narHash": "sha256-ZJ3VeNKZmKdCJL19bG7GBE+KjloDNGXFUyqt/Aewtzc=",
-        "owner": "nlewo",
+        "lastModified": 1794800487,
+        "narHash": "sha256-b7dxC8r0SEIPmg4NskLytYUbzczi3A4MZ5giuQHPinc=",
+        "owner": "owldyn",
         "repo": "comin",
-        "rev": "51e20d80b237b405009ddeb8c19a648eb95737e0",
+        "rev": "c4a2c6a3a59a0668ff1df73ef1608077c699e225",
         "type": "github"
       },
       "original": {
-        "owner": "nlewo",
+        "owner": "owldyn",
         "repo": "comin",
         "type": "github"
       }
@@ -134,15 +134,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1793864017,
-        "narHash": "sha256-UfTW7T5S2mjJKdxwZiev4kKHy+WQetY/lKDrsKaBUgc=",
-        "owner": "frc4451",
+        "lastModified": 1794122555,
+        "narHash": "sha256-HeCno8HMRFl3xvgfskCG5X4uotiBbovLZxhnLQDOEGM=",
+        "owner": "nullcubee",
         "repo": "frc-nix",
-        "rev": "5cd969ab9808fc0a8f4ff2bf290d5a8933e51e06",
+        "rev": "1a87e6108a52f9c5c22655b345407effda106ef7",
         "type": "github"
       },
       "original": {
-        "owner": "frc4451",
+        "owner": "nullcubee",
+        "ref": "rev-hardware-client",
         "repo": "frc-nix",
         "type": "github"
       }

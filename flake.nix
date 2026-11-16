@@ -24,11 +24,13 @@
       };
     };
     frc-nix = {
-      url = "github:frc4451/frc-nix";
+      # url = "github:frc4451/frc-nix";
+      url = "github:nullcubee/frc-nix/rev-hardware-client";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     comin = {
-      url = "github:nlewo/comin";
+      # url = "github:nlewo/comin";
+      url = "github:owldyn/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-github-actions = {
@@ -123,6 +125,25 @@
             modules = [
               ./nixos/modules
               ./nixos/hosts/caveserver/configuration.nix
+            ];
+          };
+
+          nh-laptop-23 = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit self inputs; };
+            modules = [
+              {
+                networking.hostName = "nh-laptop-23";
+                system.stateVersion = "25.11";
+
+                herd.comin.branches.testing = {
+                  name = "full-system";
+                  operation = "switch";
+                };
+              }
+              ./nixos/modules
+              ./nixos/modules/home-manager.nix
+              ./nixos/hardware/latitude-3550/configuration.nix
             ];
           };
         };

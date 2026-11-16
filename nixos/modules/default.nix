@@ -37,15 +37,19 @@ in
     ./comin.nix
     ./comma.nix
     ./ddclient.nix
+    ./desktop.nix
     ./fail2ban.nix
+    ./firefox.nix
     ./grub.nix
     ./ios-tether.nix
+    ./kde-plasma.nix
     ./minecraft-server.nix
     ./networking.nix
     ./nginx.nix
     ./nix.nix
     ./packages.nix
     ./plymouth.nix
+    ./printing.nix
     ./site-preview.nix
     ./systemd-boot.nix
     ./tailscale.nix
