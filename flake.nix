@@ -94,7 +94,6 @@
               system = "x86_64-linux";
               overlays = [
                 inputs.agenix.overlays.default
-                inputs.rust-overlay.overlays.default
               ];
             };
             modules = [ ./home/hosts/nerdherd4043.nix ];
