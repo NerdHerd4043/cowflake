@@ -62,13 +62,22 @@
     LIBVA_DRIVER_NAME = "i965";
     VDPAU_DRIVER = "va_gl";
   };
+  services.xserver.videoDrivers = [ "modesetting" ];
 
   programs.java = {
     enable = true;
     package = pkgs.temurin-bin-17;
   };
 
-  services.xserver.videoDrivers = [ "modesetting" ];
+  # Set touchpad to use natural scrolling inside of KDE Plasma
+  home-manager.sharedModules = [
+    {
+      qt.kde.settings = {
+        kcminputrc.Libinput."2"."7"."SynPS/2 Synaptics TouchPad".NaturalScroll = true;
+      };
+    }
+  ];
 
-  services.libinput.touchpad.naturalScrolling = true;
+  # Don't use up all resources to build derivations
+  nix.settings.cores = 1;
 }
