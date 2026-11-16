@@ -24,11 +24,13 @@
       };
     };
     frc-nix = {
-      url = "github:frc4451/frc-nix";
+      # url = "github:frc4451/frc-nix";
+      url = "github:nullcubee/frc-nix/rev-hardware-client";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     comin = {
-      url = "github:nlewo/comin";
+      # url = "github:nlewo/comin";
+      url = "github:owldyn/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-github-actions = {
