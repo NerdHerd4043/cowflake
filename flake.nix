@@ -98,8 +98,11 @@
               system = "x86_64-linux";
               overlays = [
                 inputs.agenix.overlays.default
+                inputs.frc-nix.overlays.default
               ];
+              config.allowUnfree = true;
             };
+            extraSpecialArgs = { inherit self inputs; };
             modules = [ ./home/hosts/nerdherd4043.nix ];
           };
         };
