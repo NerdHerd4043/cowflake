@@ -134,9 +134,9 @@
                 networking.hostName = "nh-laptop-23";
                 system.stateVersion = "25.11";
 
-                herd.comin.branches = {
-                  main.name = "full-system";
-                  testing.operation = "switch";
+                herd.comin.branches.testing = {
+                  name = "full-system";
+                  operation = "switch";
                 };
               }
               ./nixos/modules
