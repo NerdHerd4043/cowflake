@@ -1,0 +1,36 @@
+{ config, lib, ... }:
+
+let
+  cfg = config.herd.desktop;
+  inherit (lib)
+    mkDefault
+    mkEnableOption
+    mkIf
+    ;
+in
+{
+  options.herd.desktop = {
+    enable = mkEnableOption "herd desktop";
+  };
+
+  config = mkIf cfg.enable {
+    herd = {
+      audio.enable = mkDefault true;
+      firefox.enable = mkDefault true;
+      kde-plasma.enable = mkDefault true;
+      plymouth.enable = mkDefault true;
+      printing.enable = mkDefault true;
+    };
+
+    hardware.bluetooth.enable = true;
+
+    services.dbus.implementation = "broker";
+
+    services.comin = {
+      desktop = {
+        enable = true;
+        title = "NixOS Updates (comin)";
+      };
+    };
+  };
+}
