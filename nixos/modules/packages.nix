@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -43,11 +44,16 @@ in
       usbutils
     ];
 
-    nixpkgs.config = {
-      allowUnfreePredicate = mkIf (cfg.unfree.predicate != [ ]) (
-        pkg: builtins.elem (lib.getName pkg) cfg.unfree.predicate
-      );
-      allowUnfree = cfg.unfree.allow;
+    nixpkgs = {
+      overlays = [
+        inputs.frc-nix.overlays.default
+      ];
+      config = {
+        allowUnfreePredicate = mkIf (cfg.unfree.predicate != [ ]) (
+          pkg: builtins.elem (lib.getName pkg) cfg.unfree.predicate
+        );
+        allowUnfree = cfg.unfree.allow;
+      };
     };
   };
 }
