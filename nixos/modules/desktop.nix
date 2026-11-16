@@ -29,6 +29,7 @@ in
     services.comin = {
       desktop = {
         enable = true;
+        tray = true;
         title = "NixOS Updates (comin)";
       };
       buildConfirmer.mode = mkDefault "auto";
